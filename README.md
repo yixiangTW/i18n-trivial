@@ -1,16 +1,24 @@
-How to use ? 
-[demo](https://github.com/yixiangTW/multi-language)
+### Install
+npm install i18n-trivial --save-dev
 
-`npm install i18n-trivial`
+### Usage
+Here is an [example](https://github.com/yixiangTW/multi-language)
 
-Here is a demo, in root index.js
+### API
+
 ```javascript
-import { I18nProvider } from "i18n-trivial";
-import { createRoot } from "react-dom/client";
-import Language from "./Language";
-import App from "./App";
+import { i18n, I18nProvider, useI18n, withTranslation } from "i18n-trivial";
+```
 
+##### i18n
+`i18n.use(config)`
 
+config arg:   
+* languageOptions {[key: string]: string}
+* initialLanguage string
+* initialNamespace string
+* cache {[key: string]: any}
+```javascript
 i18n.use({
   languageOptions: {
     en: "英语",
@@ -24,25 +32,33 @@ i18n.use({
   }
 })
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
-
-root.render(
-  <div>
+```
+##### I18nProvider
+```javascript
   <I18nProvider>
     <App />
-    <Language />
   </I18nProvider>
-  </div>
+```
 
-);
+##### useI18n
+```javascript
+function App() {
+  const { t, changeLanguage, currentLanguage } = useI18n(namespace?)
+  return (
+    <div className="App">
+      {t("name")}
+      {t("address", { city: "xian" })}
+    </div>
+  );
+}
+
+export default App;
 
 ```
 
-App.js
 
+##### withTranslation
 ```javascript
-import { withTranslation } from "i18n-trivial";
 function App({ t }) {
   return (
     <div className="App">
@@ -53,59 +69,29 @@ function App({ t }) {
 }
 
 export default withTranslation(App);
+
 ```
 
-you can use t, changeLanguage, currentLanguage with props by higher-order component withTranslation   
-
-`withTranslation(YourComponent, namespace?)`   
-
-you can also get this by function useI18n   
-
-`const { t, changeLanguage, currentLanguage } = useI18n(namespace?)`
-
-if you want change language   
-
-Language.js
-
-```javascript
-import { withTranslation, i18n } from "i18n-trivial";
-
-function Language({ changeLanguage }) {
-  const handleChange = (e) => {
-    changeLanguage(e.target.value);
-  };
-
-  return (
-    <div className="App">
-      <select onChange={handleChange}>
-        {Object.keys(i18n.config.languageOptions).map((key) => {
-          return (
-            <option
-              key={key}
-              value={key}
-              selected={key === i18n.config.initialLanguage}
-            >
-              {i18n.config.languageOptions[key]}
-            </option>
-          );
-        })}
-      </select>
-    </div>
-  );
-}
-export default withTranslation(Language);
-```
-
-
-Note: if you config initialNamespace, withTranslation default read initialNamespace without input namespace
+> Note: if you config initialNamespace, `withTranslation` will read initialNamespace without input namespace by default
 
 please write translate source with this format
+
+
+### source example
+common is a namespace, you can also skip namespaces
+
 ```json
 {
   "common": {
     "name": "yixiang",
     "address": "city: {city}"
-  },
-  "namespace": {}
+  }
+}
+```
+
+```json
+{
+  "name": "yixiang",
+  "address": "city: {city}"
 }
 ```
