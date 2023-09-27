@@ -1,9 +1,12 @@
 import React from "react";
-const I18nContext = React.createContext(null as any);
+
+import { I18n, Config, T, ChangeLanguage, UseI18n, WithTranslation } from './type'
+
+const I18nContext = React.createContext({} as any);
 
 
-export const i18n: any = {
-  config: {},
+export const i18n: I18n = {
+  config: {} as Config,
   use(config: any) {
     this.config = config;
     return this;
@@ -11,12 +14,12 @@ export const i18n: any = {
 };
 
 
-export const I18nProvider = ({ children }: any) => {
+export const I18nProvider = ({ children }: { children: JSX.Element}) => {
   const {
     config: { initialLanguage, cache }
   } = i18n;
 
-  const [currentLanguage, setCurrentLanguage] = React.useState(initialLanguage);
+  const [currentLanguage, setCurrentLanguage] = React.useState<string>(initialLanguage);
   const [translations, setTranslations] = React.useState({} as any);
 
   React.useEffect(() => {
@@ -24,8 +27,8 @@ export const I18nProvider = ({ children }: any) => {
       setTranslations(cache[currentLanguage]);
     }
   }, [currentLanguage]);
-  const t = (namespace: any, key: any, payload?: any) => {
-    let result: any;
+  const t: T = (namespace, key, payload) => {
+    let result: string;
     if (typeof namespace !== "undefined") {
       if (translations[namespace] && translations[namespace][key]) {
         result = translations[namespace][key];
@@ -44,7 +47,7 @@ export const I18nProvider = ({ children }: any) => {
 
     return result;
   };
-  const changeLanguage = (lan: any) => {
+  const changeLanguage: ChangeLanguage = (lan) => {
     setCurrentLanguage(lan);
   };
 
@@ -55,22 +58,22 @@ export const I18nProvider = ({ children }: any) => {
   );
 };
 
-export const useI18n = (namespace: any) => {
+export const useI18n: UseI18n = (namespace) => {
   const { t, changeLanguage, currentLanguage } = React.useContext(I18nContext);
   return {
-    t: (key: any, payload: any) => t(namespace, key, payload),
+    t: (key, payload) => t(namespace, key, payload),
     changeLanguage,
     currentLanguage
   };
 };
 
-export const withTranslation = (Component: any, namespace: any) => (props: any) => {
+export const withTranslation: WithTranslation = (Component: any, namespace) => (props: any) => {
   const { t, changeLanguage, currentLanguage } = useI18n(
     namespace || i18n.config.initialNamespace
   );
   return (
     <Component
-      porps={props}
+      props={props}
       t={t}
       changeLanguage={changeLanguage}
       currentLanguage={currentLanguage}

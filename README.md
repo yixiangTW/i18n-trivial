@@ -97,7 +97,9 @@ export default withTranslation(Language);
 ```
 
 
-Note: namespace default is common，please write translate source with this format
+Note: if you config initialNamespace, withTranslation default read initialNamespace without input namespace
+
+please write translate source with this format
 ```json
 {
   "common": {
