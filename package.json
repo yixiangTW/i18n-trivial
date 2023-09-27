@@ -2,6 +2,15 @@
   "name": "i18n-trivial",
   "version": "0.0.1",
   "description": "A multi language library with React",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yixiangTW/i18n-trivial"
+  },
+  "keywords": [
+    "i18n",
+    "multi-language",
+    "trivial"
+  ],
   "main": "lib/index.js",
   "files": ["lib/index.js"],
   "scripts": {
