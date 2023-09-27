@@ -1,31 +1,31 @@
 import React from "react";
-const I18nContext = React.createContext();
+const I18nContext = React.createContext(null as any);
 
 
-export const i18n = {
+export const i18n: any = {
   config: {},
-  use(config) {
+  use(config: any) {
     this.config = config;
     return this;
   },
 };
 
 
-export const I18nProvider = ({ children }) => {
+export const I18nProvider = ({ children }: any) => {
   const {
     config: { initialLanguage, cache }
   } = i18n;
 
   const [currentLanguage, setCurrentLanguage] = React.useState(initialLanguage);
-  const [translations, setTranslations] = React.useState({});
+  const [translations, setTranslations] = React.useState({} as any);
 
   React.useEffect(() => {
     if (cache[currentLanguage]) {
       setTranslations(cache[currentLanguage]);
     }
   }, [currentLanguage]);
-  const t = (namespace, key, payload) => {
-    let result;
+  const t = (namespace: any, key: any, payload?: any) => {
+    let result: any;
     if (typeof namespace !== "undefined") {
       if (translations[namespace] && translations[namespace][key]) {
         result = translations[namespace][key];
@@ -44,7 +44,7 @@ export const I18nProvider = ({ children }) => {
 
     return result;
   };
-  const changeLanguage = (lan) => {
+  const changeLanguage = (lan: any) => {
     setCurrentLanguage(lan);
   };
 
@@ -55,16 +55,16 @@ export const I18nProvider = ({ children }) => {
   );
 };
 
-export const useI18n = (namespace) => {
+export const useI18n = (namespace: any) => {
   const { t, changeLanguage, currentLanguage } = React.useContext(I18nContext);
   return {
-    t: (key, payload) => t(namespace, key, payload),
+    t: (key: any, payload: any) => t(namespace, key, payload),
     changeLanguage,
     currentLanguage
   };
 };
 
-export const withTranslation = (Component, namespace) => (props) => {
+export const withTranslation = (Component: any, namespace: any) => (props: any) => {
   const { t, changeLanguage, currentLanguage } = useI18n(
     namespace || i18n.config.initialNamespace
   );

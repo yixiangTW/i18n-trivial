@@ -1,6 +1,6 @@
 {
   "name": "i18n-trivial",
-  "version": "0.0.3",
+  "version": "0.0.9",
   "description": "A multi language library with React",
   "repository": {
     "type": "git",
@@ -12,7 +12,9 @@
     "trivial"
   ],
   "main": "lib/index.js",
-  "files": ["lib/index.js"],
+  "files": [
+    "lib/*"
+  ],
   "scripts": {
     "build": "webpack --mode=production"
   },
@@ -26,10 +28,13 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@types/react": "^18.2.23",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.1",
     "style-loader": "^2.0.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
     "webpack": "^5.16.0",
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
