@@ -1,4 +1,5 @@
-How to use ?
+How to use ? 
+[demo](https://github.com/yixiangTW/multi-language)
 
 `npm install i18n-trivial`
 
