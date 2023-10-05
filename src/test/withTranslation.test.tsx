@@ -4,8 +4,16 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import withTranslation from '../i18n/withTranslation'
 import i18n from '../i18n/i18n'
-import MockComponent from './MockComponent'
 import I18nProvider from '../i18n/I18nProvider'
+
+const MockComponent = (props: any) => {
+  const { t } = props
+  return (
+    <div>
+      {t('city')}
+    </div>
+  )
+}
 
 function setUp (cache: any, initialLanguage: string) {
   i18n.use({
@@ -19,6 +27,11 @@ function setUp (cache: any, initialLanguage: string) {
   })
 }
 
+
+afterEach(() => {
+  i18n.use({} as any)
+})
+
 describe('withTranslation', () => {
 
   it('Test withTranslation without namespace', () => {
@@ -26,37 +39,14 @@ describe('withTranslation', () => {
       en: {
         city: 'This is a city'
       },
-      cn: {
-        city: '这是一座城市'
-      }
     }
     setUp(mockCache, 'en')
     const C = withTranslation(MockComponent)
     const { queryByText } = render(<I18nProvider><C /></I18nProvider>)
-    expect(queryByText('This is a city')).toBeInTheDocument()
+    expect(queryByText(mockCache.en.city)).toBeInTheDocument()
   })
 
-  it('Test withTranslation with namespace is default', () => {
-    const mockCache = {
-      en: {
-        default: {
-          city: 'This is a city'
-        }
-      },
-      cn: {
-        default: {
-          city: '这是一座城市'
-        }
-      }
-    }
-    setUp(mockCache, 'en')
-    const C = withTranslation(MockComponent, 'default')
-    const { queryByText } = render(<I18nProvider><C /></I18nProvider>)
-    expect(queryByText('This is a city')).toBeInTheDocument()
-  })
-
-
-  it('Test withTranslation with namespace is default but source is incorrect', () => {
+  it('Test withTranslation with namespace is common', () => {
     const mockCache = {
       en: {
         common: {
@@ -65,8 +55,27 @@ describe('withTranslation', () => {
       },
     }
     setUp(mockCache, 'en')
-    const C = withTranslation(MockComponent, 'default')
+    const C = withTranslation(MockComponent, 'common')
     const { queryByText } = render(<I18nProvider><C /></I18nProvider>)
-    expect(queryByText('This is a city')).not.toBeInTheDocument()
+    expect(queryByText(mockCache.en.common.city)).toBeInTheDocument()
+  })
+
+
+  it('Test withTranslation with namespace is detail but source is incorrect', () => {
+    const mockCache = {
+      en: {
+        common: {
+          city: 'This is a city'
+        },
+        detail: {
+          city: 'This is a new city'
+        },
+      },
+    }
+    setUp(mockCache, 'en')
+    const C = withTranslation(MockComponent, 'detail')
+    const { queryByText } = render(<I18nProvider><C /></I18nProvider>)
+    expect(queryByText(mockCache.en.common.city)).not.toBeInTheDocument()
+    expect(queryByText(mockCache.en.detail.city)).toBeInTheDocument()
   })
 })
