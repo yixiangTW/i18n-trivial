@@ -1,6 +1,6 @@
 {
   "name": "i18n-trivial",
-  "version": "0.1.7-beta.3",
+  "version": "1.0.0",
   "description": "A multi language library with React",
   "repository": {
     "type": "git",
