@@ -1,16 +1,36 @@
 /* eslint-disable */
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import i18n from '../i18n/i18n'
 import I18nProvider from '../i18n/I18nProvider'
 import { useI18n } from '../i18n'
 
 const MockComponent = ({ namespace }: any) => {
-  const { t } = useI18n(namespace)
+  const { t, currentLanguage, changeLanguage } = useI18n(namespace)
+  const handleChange = (e: any) => {
+    changeLanguage(e.target.value)
+  }
   return (
     <div>
-      {t('city')}
+      <div data-testid="currentLanguage">{currentLanguage}</div>
+      <div>
+      <select onChange={handleChange}>
+        {Object.keys(i18n.config.languageOptions).map((key) => {
+          return (
+            <option
+              key={key}
+              value={key}
+              defaultValue={i18n.config.initialLanguage}
+            >
+              {i18n.config.languageOptions[key]}
+            </option>
+          );
+        })}
+      </select>
+      </div>
+      <div>{t('city')}</div>
     </div>
   )
 }
@@ -34,16 +54,25 @@ afterEach(() => {
 
 describe('useI18n', () => {
 
-  it('Test useI18n without namespace', () => {
+  it('Test useI18n without namespace', async () => {
     const mockCache = {
       en: {
         city: 'This is a city'
+      },
+      cn: {
+        city: '这是一座城市'
       },
     }
     setUp(mockCache, 'en')
     const C = MockComponent
     const { queryByText } = render(<I18nProvider><C /></I18nProvider>)
     expect(queryByText(mockCache.en.city)).toBeInTheDocument()
+    expect(screen.getByTestId('currentLanguage')).toHaveTextContent('en')
+    userEvent.selectOptions(screen.getByRole('combobox'), screen.getByText('中文'))
+    await waitFor(() => {
+      expect(screen.getByTestId('currentLanguage')).toHaveTextContent('cn')
+    });
+
   })
 
   it('Test useI18n with namespace is common', () => {
