@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, "./src/index.ts"),
+  entry: path.join(__dirname, './src/index.ts'),
   output: {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
@@ -10,22 +10,22 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts']
   },
-  mode: "development",
+  mode: 'development',
   externals: {
     react: 'react',
-    'react-dom': 'react-dom',
+    'react-dom': 'react-dom'
   },
   devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       },
       {
         test: /\.tsx?$/,
@@ -33,5 +33,5 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  },
+  }
 }

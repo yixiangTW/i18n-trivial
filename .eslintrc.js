@@ -3,6 +3,7 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
+    "include": ["src/"],
     "extends": [
         "standard-with-typescript",
         "plugin:react/recommended"
