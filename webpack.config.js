@@ -1,21 +1,24 @@
 const path = require('path');
 
+const mode = process.env.MODE || 'production'
+const devtool = mode === 'production' ? false : 'inline-source-map'
 module.exports = {
   entry: path.join(__dirname, './src/index.ts'),
   output: {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
     libraryTarget: 'umd',
+    clean: true
   },
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts']
   },
-  mode: 'development',
+  mode,
   externals: {
     react: 'react',
     'react-dom': 'react-dom'
   },
-  devtool: 'inline-source-map',
+  devtool,
   module: {
     rules: [
       {

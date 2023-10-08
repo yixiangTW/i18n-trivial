@@ -1,6 +1,6 @@
 {
   "name": "i18n-trivial",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A multi language library with React",
   "repository": {
     "type": "git",
@@ -17,8 +17,9 @@
     "lib/*"
   ],
   "scripts": {
-    "esm-build": "webpack --config webpack.config-esm.js",
-    "build": "webpack --mode=production && npm run esm-build",
+    "build": "npm run umd-build && npm run esm-build",
+    "esm-build": "cross-env MODE=production webpack --config webpack.config-esm.js",
+    "umd-build": "cross-env MODE=production webpack",
     "test": "jest"
   },
   "author": "",
@@ -38,6 +39,7 @@
     "@types/react": "^18.2.23",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "eslint": "^8.50.0",
     "eslint-config-standard-with-typescript": "^39.1.0",
