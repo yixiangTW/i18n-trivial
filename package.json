@@ -12,11 +12,13 @@
     "trivial"
   ],
   "main": "lib/index.js",
+  "module": "lib/index.esm.js",
   "files": [
     "lib/*"
   ],
   "scripts": {
-    "build": "webpack --mode=production",
+    "esm-build": "webpack --config webpack.config-esm.js",
+    "build": "webpack --mode=production && npm run esm-build",
     "test": "jest"
   },
   "author": "",

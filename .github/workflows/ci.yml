@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IS_PUBLISH: false
+      IS_PUBLISH: true
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
