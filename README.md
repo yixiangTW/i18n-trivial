@@ -49,7 +49,6 @@ function App() {
   return (
     <div className="App">
       {t("name")}
-      {t("address", { city: "xian" })}
     </div>
   );
 }
@@ -65,7 +64,6 @@ function App({ t }) {
   return (
     <div className="App">
       {t("name")}
-      {t("address", { city: "xian" })}
     </div>
   );
 }
@@ -76,17 +74,32 @@ export default withTranslation(App);
 
 > Note: if you config initialNamespace, `withTranslation` will read initialNamespace without input namespace by default
 
-please write translate source with this format
+##### t
+In you component, If you use withTranslation or useI18n, you can use t function to get result
+
+```javascript
+{t("address", { city: "xian" })}
+{t('apples', {_count: 3})}
+```
+* key: string
+* payload?: any
 
 
-### source example
-common is a namespace, you can also skip namespaces
+
+
+### translation source example
+Please follow the format below to create the translation file, please note that `common` is a namespace, you can also ignore this parameter, if you do not want to use the namespace, and `_count` is a unique attribute, used to do simple and complex, do not use other
+
 
 ```json
 {
   "common": {
     "name": "yixiang",
-    "address": "city: {city}"
+    "address": "i'm in {city}",
+    "apples": {
+      "one": "{_count} apple",
+      "other": "{_count} apples"
+    }
   }
 }
 ```
