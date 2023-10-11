@@ -32,7 +32,8 @@ jobs:
           # Set the desired coverage threshold (adjust this to your desired percentage)
           COVERAGE_THRESHOLD=90
 
-          if (( $(echo "$COVERAGE >= $COVERAGE_THRESHOLD" | bc -l) )); then
+
+          if (( $(echo "$COVERAGE>=$COVERAGE_THRESHOLD" | bc -l) )); then
             echo "Coverage meets threshold, publishing to npm"
             IS_PUBLISH='true'
           else
