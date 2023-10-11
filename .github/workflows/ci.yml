@@ -28,17 +28,25 @@ jobs:
 
           # Parse the coverage report and extract the coverage percentage
           COVERAGE=$(cat coverage/lcov-report/index.html | grep -oP '(?<=<span class="strong">)[^<]+')
-          echo "aaa"
-          echo COVERAGE
-          echo $COVERAGE
+
           # Set the desired coverage threshold (adjust this to your desired percentage)
           COVERAGE_THRESHOLD=100
 
-          if [ "$(expr "$COVERAGE" ">=" "$COVERAGE_THRESHOLD")" -eq 1 ]; then
-            echo "Coverage meets threshold, publishing to npm"
+          ALL_MEET_THRESHOLD=true
+          for COVERAGE in "${COVERAGES[@]}"; do
+            # Remove % sign and any other non-numeric characters
+            COVERAGE="${COVERAGE//[^0-9.]}"
+
+            if [ "$(echo "$COVERAGE >= $COVERAGE_THRESHOLD" | bc)" -eq 0 ]; then
+              ALL_MEET_THRESHOLD=false
+              break
+            fi
+          done
+          if [ "$ALL_MEET_THRESHOLD" = true ]; then
+            echo "All coverages meet threshold, publishing to npm"
             IS_PUBLISH='true'
           else
-            echo "Coverage below threshold, not publishing to npm"
+            echo "Not all coverages meet threshold, not publishing to npm"
             IS_PUBLISH='false'
           fi
         env:
