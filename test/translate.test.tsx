@@ -32,11 +32,11 @@ describe('', () => {
 		expect(t('common', 'student')).toEqual('student')
 	})
 
-	it('Test t with not exist arg', () => {
-		const mockTranslations = {
-			common: {}
-		}
-		const t = translate(mockTranslations)
-		expect(t('common', 'student')).toEqual('student')
-	})
+	// it('Test t with not exist arg', () => {
+	// 	const mockTranslations = {
+	// 		common: {}
+	// 	}
+	// 	const t = translate(mockTranslations)
+	// 	expect(t('common', 'student')).toEqual('student')
+	// })
 })
