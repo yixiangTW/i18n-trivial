@@ -1,11 +1,11 @@
 const path = require('path');
-
 const mode = process.env.MODE || 'production'
 const devtool = mode === 'production' ? false : 'inline-source-map'
+
 module.exports = {
-  entry: path.join(__dirname, './src/index.ts'),
+  entry: path.join(__dirname, '../src/index.ts'),
   output: {
-    path: path.join(__dirname, 'lib'),
+    path: path.join(__dirname, '../lib'),
     filename: 'index.js',
     libraryTarget: 'umd',
     clean: true
@@ -38,3 +38,7 @@ module.exports = {
     ]
   }
 }
+
+
+
+

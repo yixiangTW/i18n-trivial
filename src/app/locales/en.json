@@ -1,0 +1,10 @@
+{
+  "common": {
+    "name": "yixiang",
+    "address": "city: {city}",
+    "apples": {
+      "one": "{count} apple",
+      "other": "{count} apples"
+    }
+  }
+}
