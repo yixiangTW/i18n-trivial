@@ -37,6 +37,7 @@ jobs:
             IS_PUBLISH='true'
           else
             echo "Coverage below threshold, not publishing to npm"
+            IS_PUBLISH='false'
           fi
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
