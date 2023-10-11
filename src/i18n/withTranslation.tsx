@@ -6,7 +6,6 @@ import React from 'react'
 // eslint-disable-next-line react/display-name
 const withTranslation: WithTranslation = (Component: any, namespace) => (props: any) => {
 	const { t, changeLanguage, currentLanguage } = useI18n(
-
 		namespace || i18n.config.initialNamespace
 	)
 	return (
