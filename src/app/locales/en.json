@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "yixiang",
-    "address": "city: {city}",
+    "address": "i'm in {city}",
     "apples": {
       "one": "{_count} apple",
       "other": "{_count} apples"

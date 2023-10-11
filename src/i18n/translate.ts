@@ -1,6 +1,8 @@
-const translate = (translations: any) => (namespace: string, key: string, payload?: any) => {
+import type { Translations } from './type'
+
+const translate = (translations: Translations) => (namespace: string | undefined, key: string, payload?: any) => {
 	if (Object.keys(translations).length === 0) {
-		return
+		return key
 	}
 	let result: any
 	if (typeof namespace !== 'undefined') {

@@ -1,6 +1,6 @@
 export type T = (namespace: string, key: string, payload?: any) => string
 export type ChangeLanguage = (lan: string) => void
-export interface Config {
+export interface I18nConfig {
   languageOptions: Record<string, string>
   initialLanguage: string
   initialNamespace?: string
@@ -8,8 +8,8 @@ export interface Config {
 }
 
 export interface I18n {
-  config: Config
-  use: (config: Config) => I18n
+  config: I18nConfig
+  use: (config: I18nConfig) => I18n
 }
 
 export type UseI18n = (namespace?: string) => {
@@ -19,3 +19,9 @@ export type UseI18n = (namespace?: string) => {
 }
 
 export type WithTranslation = (Component: React.FC, namespace?: string) => React.FC
+
+
+
+export type Translations = {
+	[key: string]: any
+}
