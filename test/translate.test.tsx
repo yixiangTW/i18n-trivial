@@ -2,8 +2,6 @@ import translate from '../src/i18n/translate'
 
 describe('', () => {
 
-
-
 	it('Test t with basic', () => {
 		const mockTranslations = {
 			common: {
