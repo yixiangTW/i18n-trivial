@@ -13,9 +13,9 @@ import { i18n, I18nProvider, useI18n, withTranslation } from "i18n-trivial";
 ```
 
 ##### i18n
-`i18n.use(config)`
 
-config arg:   
+You need to execute `i18n.use(config)` before the root component render
+
 * languageOptions {[key: string]: string}
 * initialLanguage? string
 * initialNamespace? string
