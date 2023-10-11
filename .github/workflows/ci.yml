@@ -26,7 +26,7 @@ jobs:
           npm run coverage
           COVERAGE=$(cat coverage/lcov-report/index.html | grep -oP '(?<=<span class="strong">)[^<]+')
           COVERAGE_THRESHOLD=100
-
+          echo COVERAGE
           if (( $(echo "$COVERAGE < $COVERAGE_THRESHOLD" | bc -l) )); then
             echo "Coverage below threshold, not publishing to npm"
             IS_PUBLISH='false'
