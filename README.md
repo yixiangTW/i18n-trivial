@@ -1,7 +1,9 @@
 ![example workflow](https://github.com/yixiangTW/i18n-trivial/actions/workflows/ci.yml/badge.svg)  ![npm](https://img.shields.io/npm/v/i18n-trivial.svg?style=flat)
 
 ### Install
+```
 npm install i18n-trivial --save-dev
+```
 
 ### Usage
 Here's an [example](https://github.com/yixiangTW/multi-language)
