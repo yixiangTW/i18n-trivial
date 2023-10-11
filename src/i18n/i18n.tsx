@@ -4,8 +4,15 @@ class I18nFactory {
 	config: Readonly<I18nConfig> = {} as I18nConfig
 
 	use(config: I18nConfig) {
-		this.config = config
+		this.clean()
+		this.config = {...this.config, ...config}
 		return this
+	}
+
+	clean() {
+		this.config = {
+			initialLanguage: navigator.language.split('-')[0]
+		} as I18nConfig
 	}
 }
 
