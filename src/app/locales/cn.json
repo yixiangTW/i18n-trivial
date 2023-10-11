@@ -1,6 +1,7 @@
 {
   "common": {
     "name": "毅翔",
-    "address": "城市：{city}"
+    "address": "城市：{city}",
+    "apples": "{_count} 苹果"
   }
 }

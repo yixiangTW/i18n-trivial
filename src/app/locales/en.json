@@ -3,8 +3,8 @@
     "name": "yixiang",
     "address": "city: {city}",
     "apples": {
-      "one": "{count} apple",
-      "other": "{count} apples"
+      "one": "{_count} apple",
+      "other": "{_count} apples"
     }
   }
 }
