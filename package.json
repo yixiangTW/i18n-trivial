@@ -20,7 +20,7 @@
     "build-app": "webpack --config config/webpack.dev.js",
     "dev": "webpack serve --config config/webpack.dev.js",
     "build": "npm run umd-build && npm run esm-build",
-    "esm-build": "cross-env MODE=production webpack --config config/webpack.esm.js",
+    "esm-build": "cross-env MODE=production webpack --config config/webpack.esm.config.js",
     "umd-build": "cross-env MODE=production webpack --config config/webpack.umd.js",
     "test": "jest"
   },
