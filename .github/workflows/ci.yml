@@ -21,6 +21,20 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm install
       - run: npm test
+      - name: Run Coverage Check
+        run: |
+          npm run coverage
+          COVERAGE=$(cat coverage/lcov-report/index.html | grep -oP '(?<=<span class="strong">)[^<]+')
+          COVERAGE_THRESHOLD=110
+
+          if (( $(echo "$COVERAGE < $COVERAGE_THRESHOLD" | bc -l) )); then
+            echo "Coverage below threshold, not publishing to npm"
+            IS_PUBLISH='false'
+          else
+            echo "Coverage meets threshold, publishing to npm"
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: npm run eslint
       - run: npm run build
       - run: npm publish
