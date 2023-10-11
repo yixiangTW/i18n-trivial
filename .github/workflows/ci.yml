@@ -28,7 +28,9 @@ jobs:
 
           # Parse the coverage report and extract the coverage percentage
           COVERAGE=$(cat coverage/lcov-report/index.html | grep -oP '(?<=<span class="strong">)[^<]+')
-
+          echo "aaa"
+          echo COVERAGE
+          echo $COVERAGE
           # Set the desired coverage threshold (adjust this to your desired percentage)
           COVERAGE_THRESHOLD=100
 
