@@ -30,7 +30,7 @@ jobs:
           COVERAGE=$(cat coverage/lcov-report/index.html | grep -oP '(?<=<span class="strong">)[^<]+')
 
           # Set the desired coverage threshold (adjust this to your desired percentage)
-          COVERAGE_THRESHOLD=90
+          COVERAGE_THRESHOLD=100
 
           if [ "$(expr "$COVERAGE" ">=" "$COVERAGE_THRESHOLD")" -eq 1 ]; then
             echo "Coverage meets threshold, publishing to npm"
