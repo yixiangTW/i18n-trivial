@@ -4,7 +4,7 @@
 npm install i18n-trivial --save-dev
 
 ### Usage
-Here is an [example](https://github.com/yixiangTW/multi-language)
+Here's an [example](https://github.com/yixiangTW/multi-language)
 
 ### API
 
@@ -17,8 +17,8 @@ import { i18n, I18nProvider, useI18n, withTranslation } from "i18n-trivial";
 
 config arg:   
 * languageOptions {[key: string]: string}
-* initialLanguage string
-* initialNamespace string
+* initialLanguage? string
+* initialNamespace? string
 * cache {[key: string]: any}
 ```javascript
 i18n.use({
@@ -36,6 +36,7 @@ i18n.use({
 
 ```
 ##### I18nProvider
+You need to wrap the project root component with the `<I18nProvider>`
 ```javascript
   <I18nProvider>
     <App />
@@ -52,9 +53,7 @@ function App() {
     </div>
   );
 }
-
 export default App;
-
 ```
 
 
@@ -68,14 +67,13 @@ function App({ t }) {
   );
 }
 
-export default withTranslation(App);
+export default withTranslation(App, namespace?);
 
 ```
 
-> Note: if you config initialNamespace, `withTranslation` will read initialNamespace without input namespace by default
+> Note: If you configured initialNamespace, this property will be read automatically when using withTranslation
 
 ##### t
-In you component, If you use withTranslation or useI18n, you can use t function to get result
 
 ```javascript
 {t("address", { city: "xian" })}
