@@ -2,29 +2,35 @@ import React from 'react'
 import i18n from './i18n'
 import I18nContext from './I18nContext'
 import translate from './translate'
-import type { ChangeLanguage } from './type'
+import formatDate from './formatDate'
+import type { ChangeLanguageFunction } from './type'
 
 const I18nProvider = ({ children }: { children: JSX.Element }) => {
 	const {
-		config: { initialLanguage, cache }
+		config: { initialLanguage, cache, dateFormats }
 	} = i18n
 
-	const [currentLanguage, setCurrentLanguage] = React.useState<string>(initialLanguage)
-	const [translations, setTranslations] = React.useState({} as any)
+	const [currentLanguage, setCurrentLanguage] = React.useState<string>(initialLanguage as string)
+	const [translations, setTranslations] = React.useState({})
+	const [formatDateConfig, setFormatDateConfig] = React.useState({})
 
 	React.useEffect(() => {
-		if (cache[currentLanguage]) {
+		if (cache && cache[currentLanguage]) {
 			setTranslations(cache[currentLanguage])
+		}
+		if(dateFormats && dateFormats[currentLanguage]) {
+			setFormatDateConfig(dateFormats[currentLanguage])
 		}
 	}, [currentLanguage])
 
 	const t = translate(translations)
-	const changeLanguage: ChangeLanguage = (lan) => {
+	const fd = formatDate(formatDateConfig)
+	const changeLanguage: ChangeLanguageFunction = (lan) => {
 		setCurrentLanguage(lan)
 	}
 
 	return (
-		<I18nContext.Provider value={{ t, changeLanguage, currentLanguage }}>
+		<I18nContext.Provider value={{ t, changeLanguage, currentLanguage, fd }}>
 			{children}
 		</I18nContext.Provider>
 	)

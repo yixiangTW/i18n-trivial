@@ -5,17 +5,17 @@ function Language({ changeLanguage }: any) {
 	const handleChange = (e: any) => {
 		changeLanguage(e.target.value)
 	}
-
+	const languageOptions = i18n.config.languageOptions || {}
 	return (
 		<div className="App">
 			<select onChange={handleChange} defaultValue={i18n.config.initialLanguage}>
-				{Object.keys(i18n.config.languageOptions).map((key) => {
+				{Object.keys(languageOptions).map((key) => {
 					return (
 						<option
 							key={key}
 							value={key}
 						>
-							{i18n.config.languageOptions[key]}
+							{languageOptions[key]}
 						</option>
 					)
 				})}

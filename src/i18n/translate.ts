@@ -1,6 +1,8 @@
-import type { Translations } from './type'
+import { InnerTranslateFunction } from './type'
 
-const translate = (translations: Translations) => (namespace: string | undefined, key: string, payload?: any) => {
+type translateType = (translations: any) => InnerTranslateFunction
+
+const translate: translateType = (translations) => (namespace, key, payload) => {
 	if (Object.keys(translations).length === 0) {
 		return key
 	}

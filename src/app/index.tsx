@@ -18,7 +18,17 @@ i18n.use({
 		en: require('./locales/en.json'),
 		cn: require('./locales/cn.json'),
 	},
-} as any)
+	dateFormats: {
+		en: {
+			short: 'MM/dd/yyyy',
+			long: 'MM dd, yyyy HH:mm:ss',
+		},
+		cn: {
+			short: 'yyyy年MM月dd日',
+			long: 'yyyy年MM月dd日 HH:mm:ss',
+		},
+	}
+})
 
 root.render(
 	<I18nProvider>

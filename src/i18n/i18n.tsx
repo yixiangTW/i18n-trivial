@@ -1,7 +1,7 @@
 import type { I18nConfig, I18n } from './type'
 
 class I18nFactory {
-	config: Readonly<I18nConfig> = {} as I18nConfig
+	config: Readonly<I18nConfig> = {}
 
 	use(config: I18nConfig) {
 		this.clean()
@@ -12,7 +12,7 @@ class I18nFactory {
 	clean() {
 		this.config = {
 			initialLanguage: navigator.language.split('-')[0]
-		} as I18nConfig
+		}
 	}
 }
 
