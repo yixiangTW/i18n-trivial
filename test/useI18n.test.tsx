@@ -11,19 +11,20 @@ const MockComponent = ({ namespace, translateArg }: any) => {
 	const handleChange = (e: any) => {
 		changeLanguage(e.target.value)
 	}
+	const languageOptions = i18n.config.languageOptions || {}
 	return (
 		<div>
 			<div data-testid="currentLanguage">{currentLanguage}</div>
 			<div>
 				<select onChange={handleChange}>
-					{Object.keys(i18n.config.languageOptions).map((key) => {
+					{Object.keys(languageOptions).map((key) => {
 						return (
 							<option
 								key={key}
 								value={key}
 								defaultValue={i18n.config.initialLanguage}
 							>
-								{i18n.config.languageOptions[key]}
+								{languageOptions[key]}
 							</option>
 						)
 					})}
