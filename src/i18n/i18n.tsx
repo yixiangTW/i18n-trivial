@@ -9,9 +9,14 @@ class I18nFactory {
 		return this
 	}
 
+
+	getDefaultLan() {
+		return navigator.language.toLowerCase()
+	}
+
 	clean() {
 		this.config = {
-			initialLanguage: navigator.language.split('-')[0]
+			initialLanguage: this.getDefaultLan()
 		}
 	}
 }
