@@ -12,7 +12,9 @@ const I18nProvider = ({ children }: { children: JSX.Element }) => {
 
 	const [currentLanguage, setCurrentLanguage] = React.useState(() => {
 		if(languageOptions) {
-			return Object.keys(languageOptions).find(lan => (initialLanguage as string).indexOf(lan) !== -1) || (initialLanguage as string)
+			const lan = Object.keys(languageOptions).find(lan => (initialLanguage as string).indexOf(lan) !== -1) || (initialLanguage as string)
+			i18n.config.initialLanguage = lan
+			return lan
 		}
 		return (initialLanguage as string)
 	})

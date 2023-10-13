@@ -16,8 +16,14 @@ const translate: translateType = (translations) => (namespace, key, payload) => 
 	} else {
 		result = translations[key] || key
 	}
-	if (payload && payload._count && result.other && result.one) {
-		result = payload._count > 1 ? result.other : result.one
+
+	if (payload && ('_count' in payload) && result.other && result.one) {
+		payload._count = payload._count === '' ? '' : Number(payload._count)
+		if(Number.isNaN(payload._count)) {
+			result = result.one
+		} else {
+			result = payload._count > 1 ? result.other : result.one
+		}
 	}
 
 	if (typeof payload !== 'undefined') {

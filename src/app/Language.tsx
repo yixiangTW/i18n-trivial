@@ -8,7 +8,7 @@ function Language({ changeLanguage }: any) {
 	const languageOptions = i18n.config.languageOptions || {}
 	return (
 		<div className="App">
-			<select onChange={handleChange} defaultValue={i18n.config.initialLanguage}>
+			<select id="changeLanguage" onChange={handleChange} defaultValue={i18n.config.initialLanguage}>
 				{Object.keys(languageOptions).map((key) => {
 					return (
 						<option
