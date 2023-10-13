@@ -27,7 +27,8 @@ i18n.use({
 			short: 'yyyy年MM月dd日',
 			long: 'yyyy年MM月dd日 HH:mm:ss',
 		},
-	}
+	},
+	defaultDateFormatKey: 'short'
 })
 
 root.render(

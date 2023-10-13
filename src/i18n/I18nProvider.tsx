@@ -7,12 +7,13 @@ import type { ChangeLanguageFunction } from './type'
 
 const I18nProvider = ({ children }: { children: JSX.Element }) => {
 	const {
-		config: { initialLanguage, cache, dateFormats }
+		config: { initialLanguage, cache, dateFormats, defaultDateFormatKey }
 	} = i18n
 
 	const [currentLanguage, setCurrentLanguage] = React.useState<string>(initialLanguage as string)
 	const [translations, setTranslations] = React.useState({})
 	const [formatDateConfig, setFormatDateConfig] = React.useState({})
+
 
 	React.useEffect(() => {
 		if (cache && cache[currentLanguage]) {
@@ -24,7 +25,7 @@ const I18nProvider = ({ children }: { children: JSX.Element }) => {
 	}, [currentLanguage])
 
 	const t = translate(translations)
-	const fd = formatDate(formatDateConfig)
+	const fd = formatDate(formatDateConfig, defaultDateFormatKey)
 	const changeLanguage: ChangeLanguageFunction = (lan) => {
 		setCurrentLanguage(lan)
 	}

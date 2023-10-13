@@ -1,12 +1,12 @@
 import { FormatDateFunction } from './type'
 
-type FormatDate = (dateFormats: any) => FormatDateFunction
-const formatDate: FormatDate = (dateFormats) => (date, formatKey) => {
+type FormatDate = (dateFormats: any, defaultDateFormatKey?: string) => FormatDateFunction
+const formatDate: FormatDate = (dateFormats, defaultDateFormatKey) => (date, formatKey = defaultDateFormatKey) => {
 	if (Object.keys(dateFormats).length === 0) {
 		return date.toString()
 	}
-	const dateFormat = dateFormats[formatKey || 'short']
 
+	const dateFormat = formatKey ? dateFormats[formatKey] : undefined
 	const formattedDate = dateFormat && dateFormat
 		.replace('yyyy', date.getFullYear())
 		.replace('yy', date.getFullYear().toString().slice(-2))

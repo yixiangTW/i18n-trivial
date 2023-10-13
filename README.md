@@ -84,6 +84,13 @@ export default withTranslation(App, namespace?);
 * key: string
 * payload?: any
 
+##### fd
+
+```javascript
+fd(new Date(), key?)
+```
+* date: Date
+* key?: string
 
 
 
