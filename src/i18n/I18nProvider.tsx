@@ -12,10 +12,14 @@ const I18nProvider = ({ children }: { children: JSX.Element }) => {
 
 	const [currentLanguage, setCurrentLanguage] = React.useState(() => {
 		if(languageOptions) {
-			const lan = Object.keys(languageOptions).find(lan => (initialLanguage as string).indexOf(lan) !== -1) || (initialLanguage as string)
-			i18n.config.initialLanguage = lan
-			return lan
+			const lan = Object.keys(languageOptions).find(lan => (initialLanguage as string).indexOf(lan) !== -1)
+			if(lan) {
+				i18n.config.initialLanguage = lan
+				return lan
+			}
+			console.warn('The current language is not supported')
 		}
+		console.warn('Please configure languageOptions when initializing i18n')
 		return (initialLanguage as string)
 	})
 	const [translations, setTranslations] = React.useState({})

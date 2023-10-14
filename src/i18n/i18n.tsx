@@ -11,7 +11,8 @@ class I18nFactory {
 
 
 	getDefaultLan() {
-		return navigator.language.toLowerCase()
+		const urlParams = new URLSearchParams(window.location.search)
+		return urlParams.get('lang') || navigator.language.toLowerCase()
 	}
 
 	clean() {
