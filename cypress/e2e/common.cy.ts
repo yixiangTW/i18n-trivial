@@ -1,6 +1,6 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('http://localhost:8080')
+    cy.visit('http://localhost:8080?lang=cn')
     cy.get('#name').should('contain', '毅翔')
     cy.get('#changeLanguage').select('en')
     cy.get('#name').should('contain', 'yixiang')

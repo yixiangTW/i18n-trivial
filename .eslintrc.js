@@ -4,10 +4,18 @@ module.exports = {
 		es2021: true,
 	},
 	extends: [
+		'airbnb',
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:react/recommended',
 	],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
 	overrides: [
 		{
 			env: {
@@ -26,10 +34,12 @@ module.exports = {
 	},
 	plugins: ['@typescript-eslint', 'react'],
 	rules: {
+		'import/extensions': 'off',
+		'react/jsx-filename-extension': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',
-		indent: ['error', 'tab'],
-		'linebreak-style': ['error', 'unix'],
-		quotes: ['error', 'single'],
-		semi: ['error', 'never'],
+		'global-require': 'off',
+		'react/jsx-no-constructed-context-values': 'off',
+		'no-underscore-dangle': ['error', { allow: ['_count'] }],
+		'no-param-reassign': 'off'
 	},
 }
