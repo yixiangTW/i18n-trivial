@@ -6,10 +6,11 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
-      publish:
-        description: '是否执行发布命令'
-        required: false
-        default: 'off' # 默认设置为 'off'
+      environment:
+        description: 'Select the environment to deploy to'
+        required: true
+        default: 'production'
+        options: ['production', 'staging']
   release:
     types: [created]
   push:
