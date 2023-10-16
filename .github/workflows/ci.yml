@@ -3,6 +3,12 @@
 
 name: CI
 on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: '是否执行发布命令'
+        required: false
+        default: 'off' # 默认设置为 'off'
   release:
     types: [created]
   push:
@@ -23,7 +29,15 @@ jobs:
       - run: npm run jest
       - run: npm run eslint
       - run: npm run build
-      - run: npm publish
-        if: env.IS_PUBLISH == 'on'
+      - name: Workflow Dispatch
+        id: workflow-dispatch
+        uses: softprops/action-gh-release@v1
+        with:
+          args: '{"inputs": {"publish": "on"}}'
+      - run: |
+          if [ "${{ github.event.inputs.publish }}" == "on" ]; then
+            npm publish
+          fi
+        # if: env.IS_PUBLISH == 'on'
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
