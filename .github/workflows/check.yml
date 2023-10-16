@@ -21,3 +21,13 @@ jobs:
       - run: npm install
       - run: npm run jest
       - run: npm run eslint
+
+      - run: npm run dev
+      - name: Wait for Server
+        run: |
+          while ! nc -z localhost 8080; do
+            sleep 1
+          done
+
+      - name: Run Cypress Tests
+        run: npm run cypress:run
