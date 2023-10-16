@@ -1,4 +1,4 @@
-![example workflow](https://github.com/yixiangTW/i18n-trivial/actions/workflows/ci.yml/badge.svg)  ![npm](https://img.shields.io/npm/v/i18n-trivial.svg?style=flat)
+![example workflow](https://github.com/yixiangTW/i18n-trivial/actions/workflows/check.yml/badge.svg)  ![npm](https://img.shields.io/npm/v/i18n-trivial.svg?style=flat)
 
 ### Install
 ```
