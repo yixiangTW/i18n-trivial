@@ -30,7 +30,7 @@ languageOptions: {
   en: '英语',
   cn: '中文',
   },
-  // initialLanguage: 'cn', set from the browser default value
+  // initialLanguage: 'cn', 
   initialNamespace: 'common',
   cache: {
     en: require('./locales/en.json'),
@@ -48,8 +48,10 @@ languageOptions: {
   },
   defaultDateFormatKey: 'short'
 })
-
 ```
+
+> Note: You can set the parameter '?lang=cn' at the end of the URL, indicating that the current default language is Chinese. The 'initialLanguage' will be automatically detected. If not specified, it will default to the browser's language. If the specified language doesn't exist, you will receive a warning.
+
 ##### I18nProvider
 You need to wrap the project root component with the `<I18nProvider>`
 ```javascript
