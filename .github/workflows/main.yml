@@ -1,3 +1,4 @@
+name: Deploy to npm
 on:
   workflow_dispatch:
     inputs:
