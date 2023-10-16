@@ -27,7 +27,7 @@
     "eslint": "eslint --ext .ts,.tsx  src",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test:dev": "npm run dev && cypress open"
+    "e2e:dev": "npm run dev && cypress open"
   },
   "author": "",
   "license": "ISC",
