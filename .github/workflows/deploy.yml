@@ -22,13 +22,13 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm run build
       - run: |
           if [ ${{ inputs.logLevel }} == 'on' ]; then
             npm publish
           else
             echo "Skipping npm publish"
           fi
+      - run: npm install
+      - run: npm run build
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
