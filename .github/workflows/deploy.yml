@@ -27,7 +27,7 @@ jobs:
             npm publish
           else
             echo "Skipping npm publish"
-            exit 0
+            exit 1
           fi
       - run: npm install
       - run: npm run build
