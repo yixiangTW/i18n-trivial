@@ -3,22 +3,17 @@
 
 name: CI
 on:
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
-
+  release:
+    types: [created]
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       IS_PUBLISH: 'off'
     steps:
-      - name: Print the input name to STDOUT
-        run: echo The username is ${{ inputs.username }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
