@@ -10,11 +10,7 @@ on:
         default: 'john-doe'
         required: false
         type: string
-  release:
-    types: [created]
-  push:
-    branches:
-      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
