@@ -6,7 +6,7 @@ npm install i18n-trivial --save-dev
 ```
 
 ### Usage
-Here's an [example](https://github.com/yixiangTW/multi-language)
+Here's an [example](https://github.com/yixiangTW/multi-language), You can also clone this project and run `npm run dev`
 
 ### API
 
