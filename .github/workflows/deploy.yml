@@ -24,7 +24,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm install
       - run: npm run build
-      - run: npm publish
-        if: ${{ inputs.logLevel }} == 'on'
+      - run: |
+          if [ ${{ inputs.logLevel }} == 'on' ]; then
+            npm publish
+          else
+            echo "Skipping npm publish"
+          fi
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
