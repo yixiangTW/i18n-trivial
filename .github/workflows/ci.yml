@@ -2,15 +2,14 @@
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
 name: CI
-
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      environment:
-        description: 'Select the environment to deploy to'
-        required: true
-        default: 'production'
-        options: ['production', 'staging']
+      username:
+        description: 'A username passed from the caller workflow'
+        default: 'john-doe'
+        required: false
+        type: string
   release:
     types: [created]
   push:
@@ -22,6 +21,8 @@ jobs:
     env:
       IS_PUBLISH: 'off'
     steps:
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -31,11 +32,6 @@ jobs:
       - run: npm run jest
       - run: npm run eslint
       - run: npm run build
-      - name: Workflow Dispatch
-        id: workflow-dispatch
-        uses: softprops/action-gh-release@v1
-        with:
-          args: '{"inputs": {"publish": "on"}}'
       - run: npm publish
         if: env.IS_PUBLISH == 'on'
         env:
