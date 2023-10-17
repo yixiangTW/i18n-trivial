@@ -1,5 +1,5 @@
 ![example workflow](https://github.com/yixiangTW/i18n-trivial/actions/workflows/check.yml/badge.svg)  ![npm](https://img.shields.io/npm/v/i18n-trivial.svg?style=flat)
-
+[![Coverage Status](https://coveralls.io/repos/github/yixiangTW/i18n-trivial/badge.svg?branch=main)](https://coveralls.io/github/yixiangTW/i18n-trivial?branch=main)
 ### Install
 ```
 npm install i18n-trivial --save-dev
