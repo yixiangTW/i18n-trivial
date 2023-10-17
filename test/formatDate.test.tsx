@@ -21,4 +21,20 @@ describe('', () => {
   it('Test create formatDate with default key is long and exec with short', () => {
     expect(formatDate(mockDateFormats, 'long')(date, 'short')).toEqual(shortResult);
   });
+
+  it('Test hh in formatDate with default key is long and exec with other', () => {
+    const mockDate = new Date('2023 10 13 13:51:13');
+    const mockResult = '10 13, 2023 01:51:13 PM';
+    expect(formatDate({
+      other: 'MM dd, yyyy hh:mm:ss a',
+    }, 'long')(mockDate, 'other')).toEqual(mockResult);
+  });
+
+  it('Test create formatDate with empty mockDateFormats', () => {
+    expect(formatDate({}, 'long')(date)).toEqual(date.toString());
+  });
+
+  it('Test create formatDate with empty key', () => {
+    expect(formatDate(mockDateFormats)(date)).toEqual(date.toString());
+  });
 });

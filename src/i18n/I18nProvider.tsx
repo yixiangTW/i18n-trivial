@@ -24,12 +24,15 @@ function I18nProvider({ children }: { children: JSX.Element }) {
       console.warn('The current language is not supported');
     }
     console.warn('Please configure languageOptions when initializing i18n');
-    return (initialLanguage as string);
+    return (initialLanguage);
   });
   const [translations, setTranslations] = React.useState({});
   const [formatDateConfig, setFormatDateConfig] = React.useState({});
 
   React.useEffect(() => {
+    if (!currentLanguage) {
+      return;
+    }
     if (cache && cache[currentLanguage]) {
       setTranslations(cache[currentLanguage]);
     }

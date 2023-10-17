@@ -24,7 +24,7 @@ export interface I18n {
 export type OuterProps = {
   t: TranslateFunction;
   changeLanguage: ChangeLanguageFunction;
-  currentLanguage: string;
+  currentLanguage: string | undefined;
   fd: FormatDateFunction;
   [key: string]: any;
 };
@@ -39,6 +39,6 @@ export type WithTranslation = (
 export type I18nContextType = {
   t: InnerTranslateFunction;
   changeLanguage: ChangeLanguageFunction;
-  currentLanguage: string;
+  currentLanguage: string | undefined;
   fd: FormatDateFunction;
 };
