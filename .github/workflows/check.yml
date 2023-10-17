@@ -19,7 +19,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm install
-      - run: npm run jest
+      - run: npm run coverage
       - run: npm run eslint
 
       - run: npm run dev &
