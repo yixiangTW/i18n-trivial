@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withTranslation } from '../i18n';
+import { withTranslation } from '../src/i18n';
 
 function App({ t, currentLanguage, fd }: any) {
   const [count, setCount] = useState(3);

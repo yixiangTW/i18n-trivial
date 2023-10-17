@@ -1,6 +1,6 @@
 {
   "name": "i18n-trivial",
-  "version": "1.1.3-beta.7",
+  "version": "1.1.5",
   "description": "A multi language library with React",
   "repository": {
     "type": "git",
@@ -17,14 +17,14 @@
     "lib/*"
   ],
   "scripts": {
-    "build-app": "webpack --config config/webpack.dev.js",
+    "build:app": "webpack --config config/webpack.dev.js",
     "dev": "webpack serve --config config/webpack.dev.js",
     "build": "npm run build:umd && npm run build:esm",
     "build:esm": "cross-env MODE=production webpack --config config/webpack.esm.config.js",
     "build:umd": "cross-env MODE=production webpack --config config/webpack.umd.js",
     "jest": "jest",
     "coverage": "jest --coverage",
-    "eslint": "eslint --ext .ts,.tsx  src",
+    "eslint": "eslint --ext .ts,.tsx src",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },

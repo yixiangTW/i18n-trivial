@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { I18nProvider, i18n } from '../i18n';
+import { I18nProvider, i18n } from '../src/i18n';
 import Language from './Language';
 import App from './App';
 

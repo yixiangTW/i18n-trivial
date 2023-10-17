@@ -111,6 +111,6 @@
     "cypress/**/*",
     "./cypress.config.ts",
     "test/*",
-    "src/app/"
+    "app"
   ],
 }

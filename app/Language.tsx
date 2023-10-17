@@ -1,5 +1,5 @@
 import React from 'react';
-import { withTranslation, i18n } from '../i18n';
+import { withTranslation, i18n } from '../src/i18n';
 
 function Language({ changeLanguage }: any) {
   const handleChange = (e: any) => {
