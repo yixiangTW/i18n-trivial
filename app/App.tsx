@@ -8,6 +8,7 @@ function App({ t, currentLanguage, fd }: any) {
   };
   return (
     <div className="App">
+      <h1>i18n-trivial</h1>
       <div>{fd(new Date(), 'long')}</div>
       <div id="name">
         name:
