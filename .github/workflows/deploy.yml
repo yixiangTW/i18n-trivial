@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: '是否发布?'
+        description: 'Publish to npm?'
         required: true
         default: 'off'
         type: choice
