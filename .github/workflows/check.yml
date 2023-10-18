@@ -34,6 +34,16 @@ jobs:
       - name: Run Cypress Tests
         run: npm run cypress:run
 
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          parallel: true
+
+  gh-pages:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
       - name: Run build app
         run: npm run build:app
 
@@ -43,13 +53,7 @@ jobs:
           branch: gh-pages
           folder: dist
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          parallel: true
-
-  finish:
+  coveralls:
     needs: check
     runs-on: ubuntu-latest
     steps:
