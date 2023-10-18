@@ -41,7 +41,7 @@ jobs:
           git config --global user.name "yixiangTW"
           git add index.html index.js index.js.LICENSE.txt
           git commit -m "Update to gh-pages"
-          git push
+          git push origin gh-pages
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
