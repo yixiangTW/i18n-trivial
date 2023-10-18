@@ -6,6 +6,6 @@
       "one": "{_count} apple",
       "other": "{_count} apples"
     },
-    "changeApple": "Please input the number of apple:"
+    "changeApple": "Please input the number of apple"
   }
 }

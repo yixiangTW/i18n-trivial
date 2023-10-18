@@ -3,6 +3,6 @@
     "name": "毅翔",
     "address": "我在{city}",
     "apples": "{_count} 个苹果",
-    "changeApple": "请输入苹果数量："
+    "changeApple": "请输入苹果数量"
   }
 }
