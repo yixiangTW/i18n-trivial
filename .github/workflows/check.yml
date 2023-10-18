@@ -47,7 +47,7 @@ jobs:
     needs: check
     runs-on: ubuntu-latest
     steps:
-      - run: ls -al
+      - uses: actions/checkout@v3
       - name: Update gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
