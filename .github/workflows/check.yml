@@ -35,8 +35,9 @@ jobs:
       - name: Update gp-pages
         run: |
           npm run build:app
-          mv dist/* ./
+
           git checkout gh-pages
+          mv dist/* ./
           git config --global user.email "1540086396@qq.com"
           git config --global user.name "yixiangTW"
           git add index.html index.js index.js.LICENSE.txt
