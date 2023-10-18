@@ -38,11 +38,15 @@ jobs:
           git fetch origin gh-pages
           git checkout gh-pages
           mv -f dist/* ./
-          git config --global user.email "1540086396@qq.com"
-          git config --global user.name "yixiangTW"
-          git add index.html index.js index.js.LICENSE.txt
-          git commit -m "Update to gh-pages"
-          git push origin gh-pages
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git config --global user.email "1540086396@qq.com"
+            git config --global user.name "yixiangTW"
+            git add index.html index.js index.js.LICENSE.txt
+            git commit -m "Update to gh-pages"
+            git push origin gh-pages
+          fi
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
