@@ -35,7 +35,7 @@ jobs:
       - name: Update gp-pages
         run: |
           npm run build:app
-
+          git fetch origin gh-pages
           git checkout gh-pages
           mv dist/* ./
           git config --global user.email "1540086396@qq.com"
