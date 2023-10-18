@@ -34,6 +34,9 @@ jobs:
       - name: Run Cypress Tests
         run: npm run cypress:run
 
+      - name: Run build app
+        run: npm run build:app
+
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
@@ -44,9 +47,6 @@ jobs:
     needs: check
     runs-on: ubuntu-latest
     steps:
-      - name: Run build app
-        run: npm run build:app
-
       - name: Update gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
