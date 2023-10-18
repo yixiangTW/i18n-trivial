@@ -37,6 +37,11 @@ jobs:
       - name: Run build app
         run: npm run build:app
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
@@ -47,7 +52,10 @@ jobs:
     needs: check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist/
       - name: Update gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
