@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { withTranslation } from '../src/i18n';
 import './index.css';
 
-function App({ t, currentLanguage, fd }: any) {
+function App({ t, fd }: any) {
   const [count, setCount] = useState(3);
   const [city, setCity] = useState('Xi\'an');
   const [dateFormatKey, setDateFormatKey] = useState('long');
@@ -13,10 +13,6 @@ function App({ t, currentLanguage, fd }: any) {
   return (
     <div className="App">
       <h1>i18n-trivial</h1>
-      <h2>
-        currentLanguage:
-        {currentLanguage}
-      </h2>
       <h3>t</h3>
       <table className="rwd-table">
         <tr>
