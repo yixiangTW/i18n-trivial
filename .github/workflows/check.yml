@@ -32,21 +32,10 @@ jobs:
       - name: Run Cypress Tests
         run: npm run cypress:run
 
-      - name: Update gp-pages
-        run: |
-          npm run build:app
-          git fetch origin gh-pages
-          git checkout gh-pages
-          mv -f dist/* ./
-          if git diff --quiet; then
-            echo "No changes to commit"
-          else
-            git config --global user.email "1540086396@qq.com"
-            git config --global user.name "yixiangTW"
-            git add index.html index.js index.js.LICENSE.txt
-            git commit -m "Update to gh-pages"
-            git push origin gh-pages
-          fi
+      - name: Update gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
