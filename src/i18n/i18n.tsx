@@ -1,6 +1,6 @@
 import type { I18nConfig, I18n } from './type';
 
-class I18nFactory {
+export class I18nFactory {
   config: Readonly<I18nConfig> = {};
 
   use(config: I18nConfig) {
@@ -18,6 +18,7 @@ class I18nFactory {
     this.config = {
       initialLanguage: I18nFactory.getDefaultLan(),
     };
+    return this;
   }
 }
 

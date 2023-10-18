@@ -18,7 +18,7 @@ export interface I18nConfig {
 export interface I18n {
   readonly config: I18nConfig;
   use: (config: I18nConfig) => I18n;
-  clean: () => void;
+  clean: () => I18n;
 }
 
 export type OuterProps = {
