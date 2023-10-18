@@ -32,6 +32,16 @@ jobs:
       - name: Run Cypress Tests
         run: npm run cypress:run
 
+    - name: Update gp-pages
+      run: |
+        npm run build:app
+        mv dist/* ./
+        git config --global user.email "1540086396@qq.com"
+        git config --global user.name "yixiangTW"
+        git add index.html index.js index.js.LICENSE.txt
+        git commit -m "Update to gh-pages"
+        git push
+
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
