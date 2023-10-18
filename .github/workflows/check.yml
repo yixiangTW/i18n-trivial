@@ -37,30 +37,17 @@ jobs:
       - name: Run build app
         run: npm run build:app
 
-      - uses: actions/upload-artifact@v3
+      - name: Update gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          name: dist
-          path: dist/
+          branch: gh-pages
+          folder: dist
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
           parallel: true
-
-  gh-pages:
-    needs: check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: dist
-          path: dist/
-      - name: Update gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
 
   coveralls:
     needs: check
