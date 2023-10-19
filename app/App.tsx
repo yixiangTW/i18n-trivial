@@ -14,6 +14,7 @@ function App({ t, fd }: any) {
     <div className="App">
       <h1>i18n-trivial</h1>
       <h3>t</h3>
+      <h1>a</h1>
       <table className="rwd-table">
         <tr>
           <th>key</th>
