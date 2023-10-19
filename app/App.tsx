@@ -13,6 +13,7 @@ function App({ t, fd }: any) {
   return (
     <div className="App">
       <h1>i18n-trivial</h1>
+      <pre>123</pre>
       <h3>t</h3>
       <table className="rwd-table">
         <tr>
