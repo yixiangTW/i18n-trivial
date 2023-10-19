@@ -1,5 +1,6 @@
 ![example workflow](https://github.com/yixiangTW/i18n-trivial/actions/workflows/check.yml/badge.svg)
 ![Static Badge](https://img.shields.io/badge/License-MIT-blue)
+[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
 ![npm](https://img.shields.io/npm/v/i18n-trivial.svg?style=flat)
 [![Coverage Status](https://coveralls.io/repos/github/yixiangTW/i18n-trivial/badge.svg?branch=main)](https://coveralls.io/github/yixiangTW/i18n-trivial?branch=main)
 ### Install
