@@ -13,6 +13,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
   },
   devServer: {
+    port: 8080,
     static: './dist',
     client: {
       overlay: {
