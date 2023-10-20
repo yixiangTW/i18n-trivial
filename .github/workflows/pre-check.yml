@@ -1,7 +1,4 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: precheck-to-main
+name: pre-check
 on:
   pull_request:
     branches:
@@ -20,24 +17,9 @@ jobs:
       - run: npm install
       - run: npm run coverage
       - run: npm run eslint
-      # - run: npm run dev &
-      # - name: Wait for Server
-      #   run: |
-      #     while ! nc -z localhost 8080; do
-      #       sleep 1
-      #     done
-
-      # - name: Run Cypress Tests
-      #   run: npm run cypress:run
-
       - name: Cypress run
-        # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v6
         with:
-          # Starts web server for E2E tests - replace with your own server invocation
-          # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
           start: npm run dev
-          wait-on: 'http://localhost:8080/' # Waits for above
-          # Records to Cypress Cloud
-          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
+          wait-on: 'http://localhost:8080/'
           record: false
