@@ -136,3 +136,6 @@ Please follow the format below to create the translation file, please note that 
   "address": "city: {city}"
 }
 ```
+
+### Contributing
+Please submit a pull request to me
