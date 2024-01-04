@@ -7,5 +7,9 @@
       "other": "{_count} apples"
     },
     "changeApple": "Please input the number of apple"
+  },
+  "log": {
+    "success": "ok",
+    "fail": "fail"
   }
 }

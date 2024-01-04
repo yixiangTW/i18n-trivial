@@ -42,5 +42,6 @@ module.exports = {
     'react/jsx-no-constructed-context-values': 'off',
     'no-underscore-dangle': ['error', { allow: ['_count'] }],
     'no-param-reassign': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

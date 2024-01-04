@@ -1,7 +1,8 @@
 import React from 'react';
 import { withTranslation, i18n } from '../src/i18n';
+import type { OuterProps } from '../src/i18n/type';
 
-function Language({ changeLanguage, currentLanguage }: any) {
+function Language({ changeLanguage, currentLanguage }: OuterProps) {
   const handleChange = (e: any) => {
     changeLanguage(e.target.value);
   };
@@ -20,7 +21,7 @@ function Language({ changeLanguage, currentLanguage }: any) {
         ))}
       </select>
       <h3>currentLanguage</h3>
-      <div>{currentLanguage + languageOptions[currentLanguage]}</div>
+      <div>{`${currentLanguage}/${languageOptions[currentLanguage as string]}`}</div>
     </div>
   );
 }

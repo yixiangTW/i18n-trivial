@@ -66,11 +66,10 @@ You need to wrap the project root component with the `<I18nProvider>`
 ##### useI18n
 ```javascript
 function App() {
-  const { t, changeLanguage, currentLanguage, fd } = useI18n(namespace?)
+  const { t, changeLanguage, currentLanguage } = useI18n(namespace?)
   return (
     <div className="App">
       {t("name")}
-      {fd(new Date())}
     </div>
   );
 }
@@ -103,13 +102,6 @@ export default withTranslation(App, namespace?);
 * key: string
 * payload?: any
 
-##### fd
-
-```javascript
-fd(new Date(), key?)
-```
-* date: Date
-* key?: string
 
 
 
