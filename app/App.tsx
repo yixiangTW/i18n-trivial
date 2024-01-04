@@ -12,6 +12,7 @@ function App({ t } : OuterProps) {
   };
   return (
     <div className="App">
+      123
       <h1>i18n-trivial</h1>
       <h3>t</h3>
       <table className="rwd-table">
