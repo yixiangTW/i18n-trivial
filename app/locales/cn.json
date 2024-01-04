@@ -4,5 +4,9 @@
     "address": "我在{city}",
     "apples": "{_count} 个苹果",
     "changeApple": "请输入苹果数量"
+  },
+  "log": {
+    "success": "成功",
+    "fail": "失败"
   }
 }

@@ -2,13 +2,12 @@ import React from 'react';
 import i18n from './i18n';
 import I18nContext from './I18nContext';
 import translate from './translate';
-import formatDate from './formatDate';
 import type { ChangeLanguageFunction } from './type';
 
 function I18nProvider({ children }: { children: JSX.Element }) {
   const {
     config: {
-      initialLanguage, cache, dateFormats, defaultDateFormatKey, languageOptions,
+      initialLanguage, cache, languageOptions,
     },
   } = i18n;
 
@@ -27,7 +26,6 @@ function I18nProvider({ children }: { children: JSX.Element }) {
     return (initialLanguage);
   });
   const [translations, setTranslations] = React.useState({});
-  const [formatDateConfig, setFormatDateConfig] = React.useState({});
 
   React.useEffect(() => {
     if (!currentLanguage) {
@@ -36,20 +34,16 @@ function I18nProvider({ children }: { children: JSX.Element }) {
     if (cache && cache[currentLanguage]) {
       setTranslations(cache[currentLanguage]);
     }
-    if (dateFormats && dateFormats[currentLanguage]) {
-      setFormatDateConfig(dateFormats[currentLanguage]);
-    }
   }, [currentLanguage]);
 
   const t = translate(translations);
-  const fd = formatDate(formatDateConfig, defaultDateFormatKey);
   const changeLanguage: ChangeLanguageFunction = (lan) => {
     setCurrentLanguage(lan);
   };
 
   return (
     <I18nContext.Provider value={{
-      t, changeLanguage, currentLanguage, fd,
+      t, changeLanguage, currentLanguage,
     }}
     >
       {children}

@@ -11,8 +11,6 @@ export interface I18nConfig {
   initialLanguage?: string;
   initialNamespace?: string;
   cache?: Record<string, any>;
-  dateFormats?: Record<string, any>;
-  defaultDateFormatKey?: string;
 }
 
 export interface I18n {
@@ -25,14 +23,13 @@ export type OuterProps = {
   t: TranslateFunction;
   changeLanguage: ChangeLanguageFunction;
   currentLanguage: string | undefined;
-  fd: FormatDateFunction;
   [key: string]: any;
 };
 
 export type UseI18n = (namespace?: string) => OuterProps;
 
 export type WithTranslation = (
-  Component: React.ComponentType,
+  Component: any,
   namespace?: string
 ) => React.ComponentType;
 
@@ -40,5 +37,4 @@ export type I18nContextType = {
   t: InnerTranslateFunction;
   changeLanguage: ChangeLanguageFunction;
   currentLanguage: string | undefined;
-  fd: FormatDateFunction;
 };
