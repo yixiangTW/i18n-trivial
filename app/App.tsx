@@ -25,7 +25,7 @@ function App({ t } : OuterProps) {
         <tr>
           <td data-th="Movie Title">name</td>
           <td data-th="Genre"><div id="name">{t('name')}</div></td>
-          <td data-th="Year">null</td>
+          <td data-th="Year" />
           <td data-th="Gross">{'t(\'name\')'}</td>
 
         </tr>
@@ -54,6 +54,12 @@ function App({ t } : OuterProps) {
           <td data-th="Gross">{"t('address', { city })"}</td>
         </tr>
 
+        <tr>
+          <td data-th="Movie Title">test.a.c</td>
+          <td data-th="Genre"><div id="address">{t('test.a.c')}</div></td>
+          <td data-th="Year" />
+          <td data-th="Gross">{'t(\'test.a.c\')'}</td>
+        </tr>
       </table>
 
     </div>
