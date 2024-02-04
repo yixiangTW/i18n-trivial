@@ -12,7 +12,7 @@ i18n.use({
     en: '英语',
     cn: '中文',
   },
-  initialLanguage: 'cn',
+  // initialLanguage: 'cn',
   initialNamespace: 'common',
   cache: {
     en: require('./locales/en.json'),
