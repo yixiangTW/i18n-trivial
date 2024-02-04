@@ -24,21 +24,21 @@ function App({ t } : OuterProps) {
         </tr>
         <tr>
           <td data-th="Movie Title">name</td>
-          <td data-th="Genre"><div id="name">{t('name')}</div></td>
+          <td data-th="Genre"><div id="name" data-translateKey="name">{t('name')}</div></td>
           <td data-th="Year" />
           <td data-th="Gross">{'t(\'name\')'}</td>
 
         </tr>
         <tr>
           <td data-th="Movie Title">apples</td>
-          <td data-th="Genre"><div id="apple">{t('apples', { _count: count })}</div></td>
+          <td data-th="Genre"><div id="apple" data-translateKey="apples">{t('apples', { _count: count })}</div></td>
           <td data-th="Year"><input id="changeCount" value={count} type="number" onChange={handleChange} /></td>
           <td data-th="Gross">{"t('apples', { _count })"}</td>
 
         </tr>
         <tr>
           <td data-th="Movie Title">address</td>
-          <td data-th="Genre"><div id="address">{t('address', { city })}</div></td>
+          <td data-th="Genre"><div id="address" data-translateKey="address">{t('address', { city })}</div></td>
           <td data-th="Year">
             <select id="selectCity" onChange={(e) => { setCity(e.target.value); }} defaultValue={city}>
               {['Xi\'an', 'Beijing', 'Qingdao'].map((key) => (
@@ -56,7 +56,7 @@ function App({ t } : OuterProps) {
 
         <tr>
           <td data-th="Movie Title">test.a.c</td>
-          <td data-th="Genre"><div id="address">{t('test.a.c')}</div></td>
+          <td data-th="Genre"><div id="test.a.c" data-translateKey="test.a.c">{t('test.a.c')}</div></td>
           <td data-th="Year" />
           <td data-th="Gross">{'t(\'test.a.c\')'}</td>
         </tr>
